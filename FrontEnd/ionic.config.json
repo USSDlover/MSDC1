@@ -1,0 +1,7 @@
+{
+  "name": "soldiering",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
