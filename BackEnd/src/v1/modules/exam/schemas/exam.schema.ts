@@ -8,23 +8,23 @@ export type ExamDocument = Exam & Document;
 export class Exam extends Document {
   @Prop({
     type: String,
-    required: true,
+    required: [true, 'Title is required for exam'],
   })
   title;
 
   @Prop({
     type: Number,
-    required: true,
+    required: [true, 'Make sure to select start date'],
   })
   startDate;
 
   @Prop({
     type: Number,
-    required: true,
+    required: [true, 'Make sure to say how much it takes'],
   })
   duration;
 
-  @Prop({ required: true })
+  @Prop({ required: [true, 'At least one question required'] })
   questions: Question[];
 }
 

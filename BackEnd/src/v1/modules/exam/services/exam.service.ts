@@ -13,8 +13,7 @@ export class ExamService {
   ) {}
 
   async create(createExamDto: CreateExamDto): Promise<Exam> {
-    const createdExam = new this.examModel(createExamDto);
-    return createdExam.save();
+    return new this.examModel(createExamDto).save().catch((e) => e.message);
   }
 
   async findAll(): Promise<Exam[]> {

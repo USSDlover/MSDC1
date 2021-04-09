@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from './v1/modules';
+import { DatabaseModule, ExamModule } from './v1/modules';
 
-const V1_Modules = [DatabaseModule];
+const V1_Modules = [DatabaseModule, ExamModule];
 
 @Module({
   imports: [...V1_Modules],
