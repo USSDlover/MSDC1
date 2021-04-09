@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+
 import { Question } from '../interfaces/question.interface';
 
 export type ExamDocument = Exam & Document;
@@ -26,6 +27,9 @@ export class Exam extends Document {
 
   @Prop({ required: [true, 'At least one question required'] })
   questions: Question[];
+
+  @Prop({ required: false, default: false, type: Boolean })
+  expired;
 }
 
 export const ExamSchema = SchemaFactory.createForClass(Exam);
