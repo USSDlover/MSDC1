@@ -1,3 +1,5 @@
+import { Exam } from '../schemas/exam.schema';
+
 export interface QuestionInterface {
   _id?: string;
   title: string;
@@ -8,4 +10,5 @@ export interface QuestionInterface {
     4?: string;
   };
   correct: number;
+  exam: Exam;
 }

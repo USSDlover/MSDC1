@@ -5,6 +5,7 @@ import { APP_COLLECTIONS, APP_CONNECTION } from '../constants';
 import { ExamService } from './services/exam.service';
 import { ExamController } from './controllers/exam.controller';
 import { Question, QuestionSchema } from './schemas/question.schema';
+import { QuestionService } from './services/question.service';
 
 @Module({
   imports: [
@@ -25,6 +26,6 @@ import { Question, QuestionSchema } from './schemas/question.schema';
     ),
   ],
   controllers: [ExamController],
-  providers: [ExamService],
+  providers: [ExamService, QuestionService],
 })
 export class ExamModule {}

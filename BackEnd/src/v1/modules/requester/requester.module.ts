@@ -9,6 +9,8 @@ import { RequesterService } from './services/requester.service';
 import { RequestingService } from './services/requesting.service';
 import { ValidatingRequesterService } from './services/validating-requester.service';
 import { RequesterController } from './controllers/requester.controller';
+import { QuestionService } from '../exam/services/question.service';
+import { Question, QuestionSchema } from '../exam/schemas/question.schema';
 
 @Module({
   imports: [
@@ -24,11 +26,21 @@ import { RequesterController } from './controllers/requester.controller';
           schema: ExamSchema,
           collection: APP_COLLECTIONS.exam,
         },
+        {
+          name: Question.name,
+          schema: QuestionSchema,
+          collection: APP_COLLECTIONS.question,
+        },
       ],
       APP_CONNECTION,
     ),
   ],
-  providers: [RequesterService, RequestingService, ValidatingRequesterService],
+  providers: [
+    RequesterService,
+    RequestingService,
+    ValidatingRequesterService,
+    QuestionService,
+  ],
   controllers: [RequesterController],
 })
 export class RequesterModule {}
