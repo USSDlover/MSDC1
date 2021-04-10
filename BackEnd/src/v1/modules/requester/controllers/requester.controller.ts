@@ -29,7 +29,7 @@ export class RequesterController {
   ) {}
 
   @Post()
-  async create(
+  async generateNewTester(
     @Body() requester: CreateRequesterDto,
   ): Promise<GeneratedRequesterDto> {
     return this.service.create(requester);
