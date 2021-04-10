@@ -30,8 +30,10 @@ export class RequestingService {
     if (exam === null)
       throw new BadRequestException('No exam assigned to this requester');
     if (exam.expired) throw new BadRequestException('Exam expired');
-    if (exam.startDate > new Date().getTime())
-      throw new BadRequestException('Exam not started');
+    if (exam.startDate > new Date().getTime()) {
+      exam.questions = [];
+      return exam;
+    }
 
     requester.startedAt = new Date().getTime();
     requester.score = 0;
