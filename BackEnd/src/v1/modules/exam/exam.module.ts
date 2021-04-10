@@ -4,6 +4,7 @@ import { Exam, ExamSchema } from './schemas/exam.schema';
 import { APP_COLLECTIONS, APP_CONNECTION } from '../constants';
 import { ExamService } from './services/exam.service';
 import { ExamController } from './controllers/exam.controller';
+import { Question, QuestionSchema } from './schemas/question.schema';
 
 @Module({
   imports: [
@@ -13,6 +14,11 @@ import { ExamController } from './controllers/exam.controller';
           name: Exam.name,
           schema: ExamSchema,
           collection: APP_COLLECTIONS.exam,
+        },
+        {
+          name: Question.name,
+          schema: QuestionSchema,
+          collection: APP_COLLECTIONS.question,
         },
       ],
       APP_CONNECTION,

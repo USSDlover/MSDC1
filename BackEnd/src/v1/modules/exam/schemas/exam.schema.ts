@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Schema as MSchema } from 'mongoose';
 
-import { Question } from '../interfaces/question.interface';
+import { QuestionInterface } from '../interfaces/question.interface';
 
 export type ExamDocument = Exam & Document;
 
@@ -25,8 +25,12 @@ export class Exam extends Document {
   })
   duration;
 
-  @Prop({ required: [true, 'At least one question required'] })
-  questions: Question[];
+  @Prop({
+    type: MSchema.Types.ObjectId,
+    required: [true, 'At least one question required'],
+    ref: 'Question',
+  })
+  questions: QuestionInterface[];
 
   @Prop({ required: false, default: false, type: Boolean })
   expired;

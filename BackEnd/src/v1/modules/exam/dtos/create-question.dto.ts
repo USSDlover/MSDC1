@@ -1,5 +1,6 @@
-export interface QuestionInterface {
-  _id?: string;
+import { Exam } from '../schemas/exam.schema';
+
+export interface CreateQuestionDto {
   title: string;
   answers: {
     1: string;
@@ -8,4 +9,5 @@ export interface QuestionInterface {
     4?: string;
   };
   correct: number;
+  exam: Exam;
 }

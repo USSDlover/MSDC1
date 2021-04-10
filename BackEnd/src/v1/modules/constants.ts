@@ -1,6 +1,7 @@
 export const APP_DB = 'mongodb://localhost:27017/soldiering';
 export const APP_COLLECTIONS = {
   exam: 'exams',
+  question: 'questions',
   user: 'users',
   requester: 'requesters',
 };

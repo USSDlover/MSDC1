@@ -1,5 +1,5 @@
-export interface QuestionInterface {
-  _id?: string;
+export interface UpdateQuestionDto {
+  _id: string;
   title: string;
   answers: {
     1: string;
