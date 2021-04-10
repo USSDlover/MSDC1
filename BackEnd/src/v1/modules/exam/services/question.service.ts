@@ -19,7 +19,9 @@ export class QuestionService {
   }
 
   async updateQuestion(updatedQuestion: UpdateQuestionDto): Promise<Question> {
-    return this.questionModel.findByIdAndUpdate(updatedQuestion).exec();
+    return this.questionModel
+      .findByIdAndUpdate(updatedQuestion._id, updatedQuestion)
+      .exec();
   }
 
   async deleteQuestion(questionId: string): Promise<Question> {
