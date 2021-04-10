@@ -40,4 +40,8 @@ export class QuestionService {
       )
       .exec();
   }
+
+  async getQuestion(id: string): Promise<Question> {
+    return this.questionModel.findById(id);
+  }
 }

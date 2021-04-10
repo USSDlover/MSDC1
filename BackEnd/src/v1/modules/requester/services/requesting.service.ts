@@ -3,9 +3,10 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { ValidatingRequesterService } from './validating-requester.service';
-// import { AnswerQuestionDto } from '../dtos/answer-question.dto';
+import { AnswerQuestionDto } from '../dtos/answer-question.dto';
 import { Exam, ExamDocument } from '../../exam/schemas/exam.schema';
 import { Requester, RequesterDocument } from '../schemas/requester.schema';
+import { QuestionService } from '../../exam/services/question.service';
 
 @Injectable()
 export class RequestingService {
@@ -15,6 +16,7 @@ export class RequestingService {
     private validator: ValidatingRequesterService,
     @InjectModel(Exam.name)
     private examModel: Model<ExamDocument>,
+    private questions: QuestionService,
   ) {}
 
   async startExam(requesterId: string): Promise<Exam> {
@@ -35,21 +37,43 @@ export class RequestingService {
     requester.score = 0;
     await this.requesterModel.findByIdAndUpdate(requester._id, requester);
 
-    const questions: any[] = [];
-
-    for (const q of exam.questions) {
-      questions.push({
-        title: q.title,
-        answers: q.answers,
-      });
-    }
-
-    exam.questions = questions;
+    exam.questions = await this.questions.getExamQuestions(exam._id, {
+      correct: 0,
+    });
 
     return exam;
   }
 
-  // async finishExam(requesterId: string): Promise<void> {}
+  async finishExam(requesterId: string): Promise<Requester> {
+    const requester = await this.requesterModel.findById(requesterId);
 
-  // async answerQuestion(answer: AnswerQuestionDto): Promise<void> {}
+    const numberOfQuestions: number = await this.questions
+      .getExamQuestions(requesterId, {})
+      .then((res) => res.length);
+    const numberOfCorrectAnswers: number = requester.answers.filter((a) => {
+      if (a.isCorrect) return a;
+    }).length;
+
+    requester.score = Math.floor(
+      (numberOfCorrectAnswers / numberOfQuestions) * 100,
+    );
+    requester.finishedAt = new Date().getTime();
+
+    return this.requesterModel.findByIdAndUpdate(requester._id, requester);
+  }
+
+  async answerQuestion(answer: AnswerQuestionDto): Promise<Requester> {
+    const requester = await this.requesterModel.findById(answer.requesterId);
+    const question = await this.questions.getQuestion(answer.questionId);
+
+    if (!requester || !question) throw new BadRequestException();
+
+    requester.answers.push({
+      questionId: question._id,
+      answer: answer.selectedAnswer,
+      isCorrect: answer.selectedAnswer === question.correct,
+    });
+
+    return this.requesterModel.findByIdAndUpdate(requester._id, requester);
+  }
 }
