@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  soldiering_api:
+    container_name: soldiering_api
+    image: alireza/soldiering-api
+    build:
+      context: .
+    ports:
+    - "3000:3000"
+    depends_on:
+      - db
+    restart: unless-stopped
+    environment:
+      - DB_URL=mongodb://db_mongo
+
+  db:
+    image: mongo
+    container_name: db_mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodata:
