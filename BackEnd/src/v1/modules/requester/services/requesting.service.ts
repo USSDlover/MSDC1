@@ -17,7 +17,7 @@ export class RequestingService {
     private examModel: Model<ExamDocument>,
   ) {}
 
-  async startExam(requesterId: string): Promise<boolean> {
+  async startExam(requesterId: string): Promise<Exam> {
     const requester = await this.requesterModel.findById(requesterId);
     if (requester === null)
       throw new BadRequestException('Requester Not Valid');
@@ -28,12 +28,25 @@ export class RequestingService {
     if (exam === null)
       throw new BadRequestException('No exam assigned to this requester');
     if (exam.expired) throw new BadRequestException('Exam expired');
+    if (exam.startDate > new Date().getTime())
+      throw new BadRequestException('Exam not started');
 
-    requester.started = true;
+    requester.startedAt = new Date().getTime();
     requester.score = 0;
     await this.requesterModel.findByIdAndUpdate(requester._id, requester);
 
-    return true;
+    const questions: any[] = [];
+
+    for (const q of exam.questions) {
+      questions.push({
+        title: q.title,
+        answers: q.answers,
+      });
+    }
+
+    exam.questions = questions;
+
+    return exam;
   }
 
   // async finishExam(requesterId: string): Promise<void> {}

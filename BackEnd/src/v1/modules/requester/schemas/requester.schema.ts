@@ -14,8 +14,11 @@ export class Requester extends Document {
   @Prop({ type: MSchema.Types.ObjectId, ref: 'Exam', required: true })
   exam: Exam;
 
-  @Prop({ required: false, default: false, type: Boolean })
-  started;
+  @Prop({ required: false, default: 0, type: Number })
+  startedAt;
+
+  @Prop({ required: false, default: 0, type: Number })
+  finishedAt;
 
   @Prop({ required: false })
   answers: AnswerInterface[];
