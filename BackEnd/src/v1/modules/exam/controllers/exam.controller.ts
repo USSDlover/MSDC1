@@ -31,6 +31,11 @@ export class ExamController {
     return this.service.findAll();
   }
 
+  @Get('expire')
+  async expireIt(@Query('id') examId: string): Promise<Exam> {
+    return this.service.expireIt(examId);
+  }
+
   @Post()
   async create(@Body() exam: CreateExamDto): Promise<Exam> {
     return this.service.create(exam);
@@ -53,6 +58,11 @@ export class ExamController {
   @Get('question')
   async getExamQuestions(@Query('id') examId: string): Promise<Question[]> {
     return this.service.getExamQuestions(examId);
+  }
+
+  @Get('question/all')
+  async getAllQuestions(): Promise<Question[]> {
+    return this.service.getAllQuestions();
   }
 
   @Post('question')

@@ -24,30 +24,42 @@ export class ExamService {
     return new this.examModel(createExamDto)
       .save()
       .then(async (res) => {
-        if (createExamDto?.questions.length > 0) {
+        if (createExamDto.questions?.length > 0) {
           for (const q of createExamDto.questions) {
             q.exam = res._id;
             const createdQ = await this.questions.create(q);
             q._id = createdQ._id;
           }
         }
+        return res;
       })
       .catch((e) => e.message);
   }
 
   async update(changes: UpdateExamDto): Promise<Exam> {
-    if (changes?.questions.length > 0) {
-      for (const q of changes.questions) {
-        if (!q._id || !q.exam) {
-          q.exam = (changes._id as unknown) as Exam;
-          const createdQ = await this.questions.create(q);
-          q._id = createdQ._id;
-        } else {
-          await this.updateQuestion(q);
-        }
-      }
-    }
+    // if (changes?.questions.length > 0) {
+    //   for (const qId of changes.questions) {
+    //     const q = await this.questions.getQuestion(qId);
+    //     if (!q._id || !q.exam || !q) {
+    //       q.exam = changes._id;
+    //       const createdQ = await this.questions.create(q as CreateQuestionDto);
+    //       q._id = createdQ._id;
+    //     } else {
+    //       await this.updateQuestion(q);
+    //     }
+    //   }
+    // }
     return this.examModel.findByIdAndUpdate(changes._id, changes).exec();
+  }
+
+  async getExamById(examId: string): Promise<Exam> {
+    return this.examModel.findById(examId);
+  }
+
+  async expireIt(examId: string): Promise<Exam> {
+    const exam = await this.getExamById(examId);
+    exam.expired = true;
+    return this.update(exam as UpdateExamDto);
   }
 
   async deleteExam(examId: string): Promise<Exam> {
@@ -88,6 +100,10 @@ export class ExamService {
 
   async getExamQuestions(id: string): Promise<Question[]> {
     return this.questions.getExamQuestions(id, {});
+  }
+
+  async getAllQuestions(): Promise<Question[]> {
+    return this.questions.getAll();
   }
 
   // endregion

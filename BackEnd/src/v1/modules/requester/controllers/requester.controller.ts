@@ -14,8 +14,8 @@ import { Requester } from '../schemas/requester.schema';
 import { CreateRequesterDto } from '../dtos/create-requester.dto';
 import { GeneratedRequesterDto } from '../dtos/generated-requester.dto';
 import { RequestingService } from '../services/requesting.service';
-import { Exam } from '../../exam/schemas/exam.schema';
 import { AnswerQuestionDto } from '../dtos/answer-question.dto';
+import { AnsweringStartedDto } from '../dtos/answering-started.dto';
 
 @Controller({
   host: undefined,
@@ -41,23 +41,23 @@ export class RequesterController {
   }
 
   @Delete()
-  async delete(@Query('id') id: string): Promise<void> {
+  async delete(@Query('id') id: string): Promise<Requester> {
     return this.service.delete(id);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Requester | null> {
-    return this.service.findOne(id);
-  }
-
   @Get('start')
-  async start(@Query('id') requesterId: string): Promise<Exam> {
+  async start(@Query('id') requesterId: string): Promise<AnsweringStartedDto> {
     return this.exam.startExam(requesterId);
   }
 
   @Get('finish')
   async finish(@Query('id') requesterId: string): Promise<Requester> {
     return this.exam.finishExam(requesterId);
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<Requester | null> {
+    return this.service.findOne(id);
   }
 
   @Post('answer')

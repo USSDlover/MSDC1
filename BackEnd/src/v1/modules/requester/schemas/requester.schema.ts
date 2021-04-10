@@ -2,7 +2,6 @@ import { Document, Schema as MSchema } from 'mongoose';
 import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
 
 import { AnswerInterface } from '../interfaces/answers.interface';
-import { Exam } from '../../exam/schemas/exam.schema';
 
 export type RequesterDocument = Requester & Document;
 
@@ -12,7 +11,7 @@ export class Requester extends Document {
   score: number;
 
   @Prop({ type: MSchema.Types.ObjectId, ref: 'Exam', required: true })
-  exam: Exam;
+  exam: string;
 
   @Prop({ required: false, default: 0, type: Number })
   startedAt;

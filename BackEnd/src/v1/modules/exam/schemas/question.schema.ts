@@ -1,6 +1,5 @@
 import { Document, Schema as MSchema } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Exam } from './exam.schema';
 
 export type QuestionDocument = Question & Document;
 
@@ -30,7 +29,7 @@ export class Question extends Document {
     ref: 'Exam',
     required: true,
   })
-  exam: Exam;
+  exam: string;
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);

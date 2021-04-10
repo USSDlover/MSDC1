@@ -33,15 +33,15 @@ export class QuestionService {
     const projection = { _v: 0 };
 
     return this.questionModel
-      .find(
-        { 'exam._id': examId },
-        Object.assign(projection, additionalFilters),
-        {},
-      )
+      .find({ exam: examId }, Object.assign(projection, additionalFilters), {})
       .exec();
   }
 
   async getQuestion(id: string): Promise<Question> {
     return this.questionModel.findById(id);
+  }
+
+  async getAll(): Promise<Question[]> {
+    return this.questionModel.find().exec();
   }
 }

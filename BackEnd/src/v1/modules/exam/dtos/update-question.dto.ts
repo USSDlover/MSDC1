@@ -1,5 +1,3 @@
-import { Exam } from '../schemas/exam.schema';
-
 export interface UpdateQuestionDto {
   _id: string;
   title: string;
@@ -10,5 +8,5 @@ export interface UpdateQuestionDto {
     4?: string;
   };
   correct: number;
-  exam: Exam;
+  exam: string;
 }

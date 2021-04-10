@@ -27,7 +27,7 @@ export class Exam extends Document {
 
   @Prop({
     type: MSchema.Types.ObjectId,
-    required: [true, 'At least one question required'],
+    required: false,
     ref: 'Question',
   })
   questions: QuestionInterface[];

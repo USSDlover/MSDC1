@@ -1,5 +1,3 @@
-import { Exam } from '../schemas/exam.schema';
-
 export interface CreateQuestionDto {
   title: string;
   answers: {
@@ -9,5 +7,5 @@ export interface CreateQuestionDto {
     4?: string;
   };
   correct: number;
-  exam: Exam;
+  exam: string;
 }

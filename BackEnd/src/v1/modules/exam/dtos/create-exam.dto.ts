@@ -4,5 +4,5 @@ export interface CreateExamDto {
   title: string;
   startDate: number;
   duration: number;
-  questions: QuestionInterface[];
+  questions?: QuestionInterface[];
 }

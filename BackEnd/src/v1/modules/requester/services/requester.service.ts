@@ -24,8 +24,8 @@ export class RequesterService {
       .catch((e) => e.message);
   }
 
-  async delete(requesterId: string): Promise<void> {
-    await this.requesterModel.findByIdAndDelete(requesterId).exec();
+  async delete(requesterId: string): Promise<Requester> {
+    return await this.requesterModel.findByIdAndDelete(requesterId).exec();
   }
 
   async findAll(): Promise<Requester[]> {
