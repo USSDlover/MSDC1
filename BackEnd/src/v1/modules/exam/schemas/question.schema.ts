@@ -6,10 +6,15 @@ export type QuestionDocument = Question & Document;
 
 @Schema()
 export class Question extends Document {
-  @Prop({ required: true })
+  @Prop({ type: String, required: true })
   title: string;
 
-  @Prop({ required: true })
+  @Prop({
+    type: {
+      1: String,
+    },
+    required: true,
+  })
   answers: {
     1: string;
     2?: string;
