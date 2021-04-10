@@ -34,6 +34,9 @@ export class Exam extends Document {
 
   @Prop({ required: false, default: false, type: Boolean })
   expired;
+
+  @Prop({ type: Number, required: false })
+  expireAt;
 }
 
 export const ExamSchema = SchemaFactory.createForClass(Exam);
