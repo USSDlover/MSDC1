@@ -82,7 +82,7 @@ export class ExamService {
   }
 
   async findAll(): Promise<Exam[]> {
-    return this.examModel.find({}, { _v: 0 }).exec();
+    return this.examModel.find({}, { __v: 0 }).exec();
   }
 
   // endregion

@@ -30,7 +30,7 @@ export class QuestionService {
     examId: string,
     additionalFilters: any,
   ): Promise<Question[]> {
-    const projection = { _v: 0 };
+    const projection = { __v: 0 };
 
     return this.questionModel
       .find({ exam: examId }, Object.assign(projection, additionalFilters), {})
