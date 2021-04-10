@@ -42,6 +42,6 @@ export class QuestionService {
   }
 
   async getAll(): Promise<Question[]> {
-    return this.questionModel.find().exec();
+    return this.questionModel.find({}, { __v: 0 }).exec();
   }
 }
