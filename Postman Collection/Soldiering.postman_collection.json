@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "6f83e19a-288f-4b03-9454-8f985c16603d",
+		"name": "Soldiering",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Exam",
+			"item": [
+				{
+					"name": "Questions",
+					"item": [
+						{
+							"name": "Add Question",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Forth defined question ?\",\r\n  \"answers\": {\r\n    \"1\": \"Answer 1\",\r\n    \"2\": \"Answ 2\"\r\n  },\r\n  \"correct\": 1,\r\n  \"exam\": {\r\n      \"_id\": \"6071826a4d41e91b74dd9d26\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/exam/question",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"exam",
+										"question"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Questions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/exam/question/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"exam",
+										"question",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Exam Questions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/exam/question?id=6071826a4d41e91b74dd9d26",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"exam",
+										"question"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6071826a4d41e91b74dd9d26"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/exam/question?id=607182ea4d41e91b74dd9d2a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"exam",
+										"question"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "607182ea4d41e91b74dd9d2a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update it",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"_id\": \"6071859fa609d91358815ff3\",\r\n  \"title\": \"Forth defined question then updated ?\",\r\n  \"answers\": {\r\n    \"1\": \"Answer 1\",\r\n    \"2\": \"Answ 2\"\r\n  },\r\n  \"correct\": 1,\r\n  \"exam\": {\r\n      \"_id\": \"6071826a4d41e91b74dd9d26\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/exam/question",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"exam",
+										"question"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Exams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exam",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Exam",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Tomorrow Exam\",\r\n    \"startDate\": 1618143952204,\r\n    \"duration\": 900\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exam",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the Exam",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exam?id=607167c84e7a3e2fec1c1227",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exam"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "607167c84e7a3e2fec1c1227"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expire The Exam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exam/expire?id=607167c84e7a3e2fec1c1227",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exam",
+								"expire"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "607167c84e7a3e2fec1c1227"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Exam",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"expired\": false,\r\n        \"_id\": \"6071826a4d41e91b74dd9d26\",\r\n        \"title\": \"Tomorrow Exam wiil do\",\r\n        \"startDate\": 1618143952204,\r\n        \"duration\": 500\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exam",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exam"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requester",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/requester",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"requester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"exam\": {\r\n        \"_id\": \"607167c84e7a3e2fec1c1227\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/requester",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"requester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/requester?id=60717bf30c66aa046c26c39d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"requester"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "60717bf30c66aa046c26c39d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start the exam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/requester/start?id=607181a74d41e91b74dd9d25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"requester",
+								"start"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "607181a74d41e91b74dd9d25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Answer Question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"requesterId\": \"60717dad8843c71be8d8ea97\",\r\n  \"questionId\": \"60716f8293d9a02d5c6d5c70\",\r\n  \"selectedAnswer\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/requester/answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"requester",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finish Exam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/requester/finish?id=60717dad8843c71be8d8ea97",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"requester",
+								"finish"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "60717dad8843c71be8d8ea97"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/requester/607181a74d41e91b74dd9d25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"requester",
+								"607181a74d41e91b74dd9d25"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
