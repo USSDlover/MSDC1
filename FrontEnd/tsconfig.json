@@ -14,7 +14,8 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@data/*": ["src/app/@data/*"]
+      "@data/*": ["src/app/@data/*"],
+      "@core/*": ["src/app/@core/*"]
     }
   },
   "angularCompilerOptions": {
