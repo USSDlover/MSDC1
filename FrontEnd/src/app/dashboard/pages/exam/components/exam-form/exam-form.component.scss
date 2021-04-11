@@ -1,0 +1,19 @@
+form {
+  width: 100%;
+  height: fit-content;
+  border: 1px solid var(--ion-color-primary);
+  padding: .75rem;
+
+  ion-item {
+    &:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+    &:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+  }
+
+  ion-button {
+    margin-top: .5rem;
+  }
+}

@@ -1,21 +1,33 @@
 <form>
-  <ion-input>
-    <ion-label>Exam Name</ion-label>
-    <input type="text">
-  </ion-input>
+  <ion-item>
+    <ion-label position="floating">Exam name</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
 
-  <ion-input>
-    <ion-label>Duration <span>in second</span></ion-label>
-    <input type="text">
-  </ion-input>
+  <ion-item>
+    <ion-label position="floating">Duration in second</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
 
-  <ion-input>
-    <ion-label>Start at</ion-label>
-    <input type="datetime-local">
-  </ion-input>
+  <ion-item>
+    <ion-label position="floating">Start at</ion-label>
+    <ion-datetime></ion-datetime>
+  </ion-item>
 
-  <ion-input>
-    <ion-label>End at</ion-label>
-    <input type="datetime-local">
-  </ion-input>
+  <ion-item>
+    <ion-label position="floating">End at</ion-label>
+    <ion-datetime></ion-datetime>
+  </ion-item>
+
+  <ion-buttons>
+    <ion-button color="success">
+      <ion-icon name="save"></ion-icon>
+    </ion-button>
+    <ion-button color="warning">
+      <ion-icon name="pencil"></ion-icon>
+    </ion-button>
+    <ion-button color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </form>
