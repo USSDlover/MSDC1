@@ -6,11 +6,11 @@ import {ExamInterface} from '@data/interfaces';
   selector: 'app-exam-list',
   templateUrl: './exam-list.component.html',
   styleUrls: ['./exam-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ExamListComponent implements OnInit {
   @Input() exams: ExamInterface[];
-  @Output() examSelected = new EventEmitter<string>();
+  @Output() examSelected = new EventEmitter<ExamInterface>();
 
   public selectedExamIndex: number;
 
@@ -20,9 +20,14 @@ export class ExamListComponent implements OnInit {
   public ngOnInit() {
   }
 
-  public onSelectExam(id: string, index: number): void {
+  public onDefineNewExam(): void {
+    this.selectedExamIndex = null;
+    this.examSelected.emit(null);
+  }
+
+  public onSelectExam(exam: ExamInterface, index: number): void {
     this.selectedExamIndex = index;
-    this.examSelected.emit(id);
+    this.examSelected.emit(exam);
   }
 
 }

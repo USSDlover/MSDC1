@@ -1,8 +1,9 @@
 <ion-list>
   <ion-header>Defined Exams</ion-header>
 
-  <ion-item [button]="true" [color]="'success'">
+  <ion-item [button]="true" [color]="'success'" (click)="onDefineNewExam()">
     <ion-label>Define new exam</ion-label>
+    <ion-icon name="add-outline" slot="end"></ion-icon>
   </ion-item>
 
   <ng-container *ngIf="exams?.length > 0 else noExam">
@@ -11,11 +12,12 @@
         loadingText="Loading more data..."
         loadingSpinner="bubbles">
         <ion-item
-          (click)="onSelectExam(exam._id, i)"
+          (click)="onSelectExam(exam, i)"
           *ngFor="let exam of exams; index as i"
+          [color]="selectedExamIndex === i ? 'tertiary': ''"
           [button]="true">
           <ion-icon
-            color="primary"
+            [color]="selectedExamIndex === i ? '': 'primary'"
             slot="start"
             [ios]="'clipboard-outline'"
             [md]="'clipboard-sharp'"></ion-icon>

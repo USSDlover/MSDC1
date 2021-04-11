@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {ExamInterface, QuestionInterface} from '@data/interfaces';
 import {ModalController} from '@ionic/angular';
 import {QuestionFormComponent} from './components/question-form/question-form.component';
+import {ExamCreateDto, ExamUpdateDto} from '@data/dtos';
 
 @Component({
   selector: 'app-exam',
@@ -14,6 +15,7 @@ import {QuestionFormComponent} from './components/question-form/question-form.co
 export class ExamComponent implements OnInit, OnDestroy {
   public exams: ExamInterface[];
   public selectedExamQuestions: QuestionInterface[];
+  public selectedExam: ExamInterface;
   private getExamSub: Subscription;
 
   constructor(
@@ -26,12 +28,37 @@ export class ExamComponent implements OnInit, OnDestroy {
     this.getExams();
   }
 
-  public async onExamSelect(examId: string): Promise<void> {
+  public async onUpdateExam(updatedExam: ExamUpdateDto): Promise<void> {
     this.service
-      .getExamQuestions(examId)
+      .updateExam(updatedExam)
+      .toPromise()
+      .then(() => this.getExams())
+      .catch(err => console.error(err))
+      .finally();
+  }
+
+  public async onCreateExam(createdExam: ExamCreateDto): Promise<void> {
+    this.service
+      .createExam(createdExam)
+      .toPromise()
+      .then(res => {
+        this.exams.push(res);
+      })
+      .catch(err => console.error(err))
+      .finally();
+  }
+
+  public async onExamSelect(exam: ExamInterface): Promise<void> {
+    if (!exam) {
+      this.selectedExam = null;
+      return;
+    }
+    this.service
+      .getExamQuestions(exam._id)
       .toPromise()
       .then((res) => {
         console.log(res);
+        this.selectedExam = exam;
         this.selectedExamQuestions = res;
       })
       .catch(err => console.error(err));

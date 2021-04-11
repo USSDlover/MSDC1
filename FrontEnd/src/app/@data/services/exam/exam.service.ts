@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '@core/services';
-import {ExamInterface, QuestionInterface} from '@data/interfaces';
+import {ExamInterface, QuestionInterface} from '../../interfaces';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
+import {ExamCreateDto, ExamUpdateDto} from '../../dtos';
 
 @Injectable()
 export class ExamService {
@@ -11,6 +12,14 @@ export class ExamService {
 
   getAll(): Observable<ExamInterface[]> {
     return this.api.makeGetApiCall<ExamInterface[]>('exam');
+  }
+
+  createExam(createdExam: ExamCreateDto): Observable<ExamInterface> {
+    return this.api.makePostApiCall<ExamInterface>('exam', createdExam);
+  }
+
+  updateExam(updatedExam: ExamUpdateDto): Observable<ExamInterface> {
+    return this.api.makePutApiCall<ExamInterface>('exam', updatedExam);
   }
 
   getExamQuestions(examId: string): Observable<QuestionInterface[]> {

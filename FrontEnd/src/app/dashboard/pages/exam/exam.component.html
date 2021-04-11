@@ -6,9 +6,14 @@
     </app-exam-list>
   </div>
   <div class="exam-content-container">
-    <app-exam-form></app-exam-form>
+    <app-exam-form
+      (createExam)="onCreateExam($event)"
+      (updateExam)="onUpdateExam($event)"
+      [exam]="selectedExam">
+    </app-exam-form>
     <ion-item button="true" color="success" (click)="onNewQuestion()">
       <ion-label>Add new question</ion-label>
+      <ion-icon name="add-outline" slot="end"></ion-icon>
     </ion-item>
     <app-question-list [questions]="selectedExamQuestions">
     </app-question-list>

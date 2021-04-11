@@ -1,11 +1,11 @@
 import {UpdateQuestionDto} from '../question';
 
-export interface UpdateExamDto {
+export interface ExamUpdateDto {
   _id: string;
   title: string;
-  startDate: number;
-  expired: boolean;
-  expireAt: number;
   duration: number;
-  questions: UpdateQuestionDto[];
+  startDate: number;
+  expireAt: number;
+  expired: boolean;
+  questions?: UpdateQuestionDto[];
 }

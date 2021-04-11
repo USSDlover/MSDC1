@@ -1,6 +1,6 @@
 import { QuestionInterface } from '../../interfaces/question.interface';
 
-export interface CreateExamDto {
+export interface ExamCreateDto {
   title: string;
   startDate: number;
   duration: number;

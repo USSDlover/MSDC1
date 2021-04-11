@@ -9,6 +9,7 @@ import {QuestionComponent} from './components/question-list/question/question.co
 import {IonicModule} from '@ionic/angular';
 import {ExamFormComponent} from './components/exam-form/exam-form.component';
 import {ExamListComponent} from './components/exam-list/exam-list.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {ExamListComponent} from './components/exam-list/exam-list.component';
     imports: [
         CommonModule,
         ExamRoutingModule,
-        IonicModule
+        IonicModule,
+        ReactiveFormsModule
     ]
 })
 export class ExamModule { }
