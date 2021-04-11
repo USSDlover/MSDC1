@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {DashboardComponent} from './dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pages/Exam',
-    pathMatch: 'full'
+    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'pages',
+        pathMatch: 'full'
+      },
+      {
+        path: 'pages',
+        loadChildren: () => import('./pages/pages.module').then( m => m.PagesModule)
+      }
+    ]
   },
-  {
-    path: 'pages/:id',
-    loadChildren: () => import('./pages/pages.module').then( m => m.PagesModule)
-  }
 ];
 
 @NgModule({

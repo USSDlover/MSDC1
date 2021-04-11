@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { PagesRoutingModule } from './pages-routing.module';
 
 import { PagesComponent } from './pages.component';
+import {SettingsComponent} from './settings/settings.component';
+import {ChangePassComponent} from './settings/change-pass/change-pass.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { PagesComponent } from './pages.component';
     IonicModule,
     PagesRoutingModule
   ],
-  declarations: [PagesComponent]
+  declarations: [PagesComponent, SettingsComponent, ChangePassComponent]
 })
 export class PagesModule {}

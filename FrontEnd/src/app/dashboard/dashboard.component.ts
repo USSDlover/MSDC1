@@ -1,8 +1,19 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MenuController} from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
-  template: '<ion-router-outlet></ion-router-outlet>',
-  styles: ['']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {}
+export class DashboardComponent implements OnInit {
+
+  constructor(
+    private menu: MenuController
+  ) {
+    menu.enable(true, 'dash-menu').finally();
+  }
+
+  public ngOnInit(): void {
+  }
+}
