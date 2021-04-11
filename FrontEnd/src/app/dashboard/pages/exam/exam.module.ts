@@ -6,18 +6,24 @@ import {ExamComponent} from './exam.component';
 import {QuestionFormComponent} from './components/question-form/question-form.component';
 import {QuestionListComponent} from './components/question-list/question-list.component';
 import {QuestionComponent} from './components/question-list/question/question.component';
+import {IonicModule} from '@ionic/angular';
+import {ExamFormComponent} from './components/exam-form/exam-form.component';
+import {ExamListComponent} from './components/exam-list/exam-list.component';
 
 
 @NgModule({
   declarations: [
     ExamComponent,
+    ExamFormComponent,
+    ExamListComponent,
     QuestionFormComponent,
     QuestionListComponent,
     QuestionComponent
   ],
-  imports: [
-    CommonModule,
-    ExamRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        ExamRoutingModule,
+        IonicModule
+    ]
 })
 export class ExamModule { }
