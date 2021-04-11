@@ -1,6 +1,16 @@
-<div>
-  <p>question-list works! </p>
-  <div>
-    <app-question></app-question>
-  </div>
-</div>
+<ng-container *ngIf="questions?.length > 0 else noQuestion">
+  <ion-infinite-scroll>
+    <ion-infinite-scroll-content
+      loadingText="Loading more..."
+      loadingSpinner="bubbles">
+      <app-question>
+      </app-question>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ng-container>
+
+<ng-template #noQuestion>
+  <ion-item disabled>
+    <ion-label>NO QUESTION ADDED YET</ion-label>
+  </ion-item>
+</ng-template>

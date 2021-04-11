@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {QuestionInterface} from '@data/interfaces';
 
 @Component({
   selector: 'app-question-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-list.component.scss'],
 })
 export class QuestionListComponent implements OnInit {
+  @Input() questions: QuestionInterface[];
 
   constructor() { }
 
