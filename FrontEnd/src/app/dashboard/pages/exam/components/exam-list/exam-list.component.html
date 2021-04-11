@@ -1,6 +1,33 @@
 <ion-list>
   <ion-header>Defined Exams</ion-header>
-  <ion-item>
-    <ion-label>Exam name</ion-label>
+
+  <ion-item [button]="true" [color]="'success'">
+    <ion-label>Define new exam</ion-label>
   </ion-item>
+
+  <ng-container *ngIf="exams?.length > 0 else noExam">
+    <ion-infinite-scroll>
+      <ion-infinite-scroll-content
+        loadingText="Loading more data..."
+        loadingSpinner="bubbles">
+        <ion-item *ngFor="let exam of exams" [button]="true">
+          <ion-icon
+            color="primary"
+            slot="start"
+            [ios]="'clipboard-outline'"
+            [md]="'clipboard-sharp'"></ion-icon>
+          <ion-label>
+            {{ exam.title }}
+          </ion-label>
+        </ion-item>
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ng-container>
+
 </ion-list>
+
+<ng-template #noExam>
+  <ion-item disabled>
+    <ion-label>EMPTY</ion-label>
+  </ion-item>
+</ng-template>
