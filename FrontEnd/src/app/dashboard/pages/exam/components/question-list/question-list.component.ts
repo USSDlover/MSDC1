@@ -5,7 +5,7 @@ import {QuestionInterface} from '@data/interfaces';
   selector: 'app-question-list',
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class QuestionListComponent implements OnInit {
   @Input() questions: QuestionInterface[];

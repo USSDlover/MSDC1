@@ -69,14 +69,12 @@ export class ExamComponent implements OnInit, OnDestroy {
       component: QuestionFormComponent,
     });
     await modal.present();
-    modal.onDidDismiss<{
-      data: QuestionCreateDto | QuestionUpdateDto,
-      role: 'create' | 'update' }>()
+    modal.onDidDismiss<{question: QuestionCreateDto | QuestionUpdateDto}>()
       .then(res => {
         switch (res.role) {
           case 'create':
-            console.log('Create this');
-            console.log(res.data);
+            res.data.question.exam = this.selectedExam._id;
+            this.createQuestion((res.data.question as unknown) as QuestionCreateDto);
             break;
           case 'update':
             console.log('Update this');
@@ -86,6 +84,18 @@ export class ExamComponent implements OnInit, OnDestroy {
             break;
         }
       });
+  }
+
+  private createQuestion(createdQuestion: QuestionCreateDto): void {
+    console.log(createdQuestion);
+    this.service
+      .createQuestion(createdQuestion)
+      .toPromise()
+      .then(res => {
+        this.selectedExamQuestions.push(res);
+      })
+      .catch(err => console.error(err))
+      .finally();
   }
 
   private getExams(): void {

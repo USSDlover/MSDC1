@@ -7,6 +7,14 @@ form {
     min-width: 100%;
   }
 
+  .radios {
+    display: flex;
+    justify-content: space-evenly;
+    ion-item ion-label {
+      margin-inline-end: .5rem;
+    }
+  }
+
   ion-buttons {
     width: 100%;
     display: flex;

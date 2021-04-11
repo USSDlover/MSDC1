@@ -1,29 +1,48 @@
-<form>
+<form [formGroup]="questionForm">
   <div class="inputs">
     <ion-item>
       <ion-label position="floating">Question name</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="title"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">1st Answer</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="one"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">2nd Answer</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="two"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">3rd Answer</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="three"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">4th Answer</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="four"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Correct Answer</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
+    <ion-radio-group formControlName="correct">
+      <ion-item>
+        <ion-label color="success">Please select correct answer</ion-label>
+      </ion-item>
+      <div class="radios">
+        <ion-item>
+          <ion-label>1</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>2</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>3</ion-label>
+          <ion-radio value="3"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>4</ion-label>
+          <ion-radio value="4"></ion-radio>
+        </ion-item>
+      </div>
+    </ion-radio-group>
   </div>
   <ion-buttons>
     <ion-button color="danger" (click)="onDismiss()">

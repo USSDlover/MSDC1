@@ -3,7 +3,7 @@ import {ApiService} from '@core/services';
 import {ExamInterface, QuestionInterface} from '../../interfaces';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {ExamCreateDto, ExamUpdateDto} from '../../dtos';
+import {ExamCreateDto, ExamUpdateDto, QuestionCreateDto} from '../../dtos';
 
 @Injectable()
 export class ExamService {
@@ -28,5 +28,10 @@ export class ExamService {
 
     return this.api
       .makeGetApiCall<QuestionInterface[]>('exam/question', params);
+  }
+
+  createQuestion(createdQuestion: QuestionCreateDto): Observable<QuestionInterface> {
+    return this.api
+      .makePostApiCall<QuestionInterface>('exam/question', createdQuestion);
   }
 }
