@@ -1,0 +1,21 @@
+form {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .inputs {
+    min-width: 100%;
+  }
+
+  ion-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-inline: 2rem;
+  }
+
+  ion-buttons ion-button ion-icon {
+    margin-inline-end: 1rem;
+  }
+}

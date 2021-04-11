@@ -3,6 +3,8 @@ import {ExamService} from '@data/services';
 import {Subscription} from 'rxjs';
 
 import {ExamInterface} from '@data/interfaces';
+import {ModalController} from '@ionic/angular';
+import {QuestionFormComponent} from './components/question-form/question-form.component';
 
 @Component({
   selector: 'app-exam',
@@ -13,10 +15,20 @@ export class ExamComponent implements OnInit, OnDestroy {
   public exams: ExamInterface[];
   private getExamSub: Subscription;
 
-  constructor(private service: ExamService) { }
+  constructor(
+    public modal: ModalController,
+    private service: ExamService
+  ) { }
 
   public ngOnInit(): void {
     this.getExams();
+  }
+
+  public async onNewQuestion() {
+    const modal = await this.modal.create({
+      component: QuestionFormComponent,
+    });
+    return await modal.present();
   }
 
   private getExams(): void {

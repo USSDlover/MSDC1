@@ -1,7 +1,39 @@
-<div>
-  <p>Question form</p>
-  <ion-input>
-    <ion-label>Input label</ion-label>
-    <input type="text">
-  </ion-input>
-</div>
+<form>
+  <div class="inputs">
+    <ion-item>
+      <ion-label position="floating">Question name</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">1st Answer</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">2nd Answer</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">3rd Answer</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">4th Answer</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Correct Answer</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+  </div>
+  <ion-buttons>
+    <ion-button color="danger">
+      <ion-icon name="close"></ion-icon>
+      <ion-label>Cancel</ion-label>
+    </ion-button>
+    |
+    <ion-button color="primary">
+      <ion-icon name="save"></ion-icon>
+      <ion-label>Submit</ion-label>
+    </ion-button>
+  </ion-buttons>
+</form>
