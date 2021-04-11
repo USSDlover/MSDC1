@@ -10,7 +10,10 @@
       <ion-infinite-scroll-content
         loadingText="Loading more data..."
         loadingSpinner="bubbles">
-        <ion-item *ngFor="let exam of exams" [button]="true">
+        <ion-item
+          (click)="onSelectExam(exam._id, i)"
+          *ngFor="let exam of exams; index as i"
+          [button]="true">
           <ion-icon
             color="primary"
             slot="start"

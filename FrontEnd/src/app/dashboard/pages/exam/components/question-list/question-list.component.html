@@ -3,8 +3,10 @@
     <ion-infinite-scroll-content
       loadingText="Loading more..."
       loadingSpinner="bubbles">
-      <app-question>
-      </app-question>
+      <ng-container *ngFor="let q of questions">
+        <app-question [question]="q">
+        </app-question>
+      </ng-container>
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ng-container>

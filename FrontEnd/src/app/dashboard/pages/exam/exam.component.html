@@ -1,12 +1,16 @@
 <div class="exam-container">
   <div class="exam-list-container">
-    <app-exam-list [exams]="exams"></app-exam-list>
+    <app-exam-list
+      (examSelected)="onExamSelect($event)"
+      [exams]="exams">
+    </app-exam-list>
   </div>
   <div class="exam-content-container">
     <app-exam-form></app-exam-form>
     <ion-item button="true" color="success" (click)="onNewQuestion()">
       <ion-label>Add new question</ion-label>
     </ion-item>
-    <app-question-list></app-question-list>
+    <app-question-list [questions]="selectedExamQuestions">
+    </app-question-list>
   </div>
 </div>

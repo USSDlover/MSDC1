@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ExamService} from '@data/services';
 import {Subscription} from 'rxjs';
 
-import {ExamInterface} from '@data/interfaces';
+import {ExamInterface, QuestionInterface} from '@data/interfaces';
 import {ModalController} from '@ionic/angular';
 import {QuestionFormComponent} from './components/question-form/question-form.component';
 
@@ -13,15 +13,28 @@ import {QuestionFormComponent} from './components/question-form/question-form.co
 })
 export class ExamComponent implements OnInit, OnDestroy {
   public exams: ExamInterface[];
+  public selectedExamQuestions: QuestionInterface[];
   private getExamSub: Subscription;
 
   constructor(
     public modal: ModalController,
     private service: ExamService
-  ) { }
+  ) {
+  }
 
   public ngOnInit(): void {
     this.getExams();
+  }
+
+  public async onExamSelect(examId: string): Promise<void> {
+    this.service
+      .getExamQuestions(examId)
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+        this.selectedExamQuestions = res;
+      })
+      .catch(err => console.error(err));
   }
 
   public async onNewQuestion() {
@@ -36,7 +49,8 @@ export class ExamComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => this.exams = res,
         error: err => console.error(err),
-        complete: () => {}
+        complete: () => {
+        }
       });
   }
 

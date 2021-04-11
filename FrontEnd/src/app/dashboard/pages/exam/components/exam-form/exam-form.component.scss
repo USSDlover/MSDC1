@@ -1,16 +1,22 @@
 form {
   width: 100%;
   height: fit-content;
-  border: 1px solid var(--ion-color-primary);
+  border: 3px solid var(--ion-color-success);
   padding: .75rem;
 
   ion-item {
     &:first-child {
       border-radius: 8px 8px 0 0;
     }
-    &:last-child {
+    &:nth-child(4) {
       border-radius: 0 0 8px 8px;
     }
+  }
+
+  ion-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
   }
 
   ion-button {

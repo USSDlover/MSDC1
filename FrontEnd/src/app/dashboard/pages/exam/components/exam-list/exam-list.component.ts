@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import {ExamInterface} from '@data/interfaces';
 
@@ -10,9 +10,19 @@ import {ExamInterface} from '@data/interfaces';
 })
 export class ExamListComponent implements OnInit {
   @Input() exams: ExamInterface[];
+  @Output() examSelected = new EventEmitter<string>();
 
-  constructor() { }
+  public selectedExamIndex: number;
 
-  ngOnInit() {}
+  constructor() {
+  }
+
+  public ngOnInit() {
+  }
+
+  public onSelectExam(id: string, index: number): void {
+    this.selectedExamIndex = index;
+    this.examSelected.emit(id);
+  }
 
 }
