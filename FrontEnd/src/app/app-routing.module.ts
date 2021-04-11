@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./landing/landing.module').then( m => m.LandingModule)
+  },
+  {
+    path: 'guardian',
+    loadChildren: () => import('./become-guardian/become-guardian.module').then( m => m.BecomeGuardianModule )
   }
 ];
 

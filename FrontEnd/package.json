@@ -1,8 +1,8 @@
 {
   "name": "soldiering",
-  "version": "0.2.19",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "0.3.9",
+  "author": "Alireza Razinejad",
+  "homepage": "https://razinejad.ir/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
