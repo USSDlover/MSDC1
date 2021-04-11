@@ -1,4 +1,4 @@
-import {UpdateQuestionDto} from '../question';
+import {QuestionUpdateDto} from '../question';
 
 export interface ExamUpdateDto {
   _id: string;
@@ -7,5 +7,5 @@ export interface ExamUpdateDto {
   startDate: number;
   expireAt: number;
   expired: boolean;
-  questions?: UpdateQuestionDto[];
+  questions?: QuestionUpdateDto[];
 }

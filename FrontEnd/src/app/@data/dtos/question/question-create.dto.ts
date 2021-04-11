@@ -1,4 +1,4 @@
-export interface CreateQuestionDto {
+export interface QuestionCreateDto {
   title: string;
   answers: {
     1: string;

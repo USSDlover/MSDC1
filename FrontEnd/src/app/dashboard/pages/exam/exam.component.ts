@@ -5,7 +5,7 @@ import {Subscription} from 'rxjs';
 import {ExamInterface, QuestionInterface} from '@data/interfaces';
 import {ModalController} from '@ionic/angular';
 import {QuestionFormComponent} from './components/question-form/question-form.component';
-import {ExamCreateDto, ExamUpdateDto} from '@data/dtos';
+import {ExamCreateDto, ExamUpdateDto, QuestionCreateDto, QuestionUpdateDto} from '@data/dtos';
 
 @Component({
   selector: 'app-exam',
@@ -64,11 +64,28 @@ export class ExamComponent implements OnInit, OnDestroy {
       .catch(err => console.error(err));
   }
 
-  public async onNewQuestion() {
+  public async onNewQuestion(): Promise<void> {
     const modal = await this.modal.create({
       component: QuestionFormComponent,
     });
-    return await modal.present();
+    await modal.present();
+    modal.onDidDismiss<{
+      data: QuestionCreateDto | QuestionUpdateDto,
+      role: 'create' | 'update' }>()
+      .then(res => {
+        switch (res.role) {
+          case 'create':
+            console.log('Create this');
+            console.log(res.data);
+            break;
+          case 'update':
+            console.log('Update this');
+            console.log(res.data);
+            break;
+          default:
+            break;
+        }
+      });
   }
 
   private getExams(): void {

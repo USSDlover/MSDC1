@@ -28,7 +28,7 @@ export class ExamFormComponent implements OnInit, OnChanges {
     console.log('Change detected');
     this.editMode = !!this.exam?._id;
     if (this.examForm && this.editMode) {
-      this.fixValueOnChange();
+      this.setValueOnChange();
     } else if (this.examForm && !this.editMode) {
       this.examForm.reset();
     }
@@ -55,11 +55,11 @@ export class ExamFormComponent implements OnInit, OnChanges {
     }
   }
 
-  private fixValueOnChange(): void {
+  private setValueOnChange(): void {
     this.examForm.get('title').setValue(this.exam?.title ?? null);
     this.examForm.get('duration').setValue(this.exam?.duration ?? null);
-    this.examForm.get('startDate').setValue(this.exam?.startDate ? new Date(this.exam.startDate) : null);
-    this.examForm.get('expireAt').setValue(this.exam?.expireAt ? new Date(this.exam.expireAt) : null);
+    this.examForm.get('startDate').setValue(this.exam?.startDate ?? null);
+    this.examForm.get('expireAt').setValue(this.exam?.expireAt ?? null);
   }
 
   private initForm(): void {

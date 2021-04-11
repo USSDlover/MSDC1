@@ -1,4 +1,4 @@
-export interface UpdateQuestionDto {
+export interface QuestionUpdateDto {
   _id: string;
   title: string;
   answers: {

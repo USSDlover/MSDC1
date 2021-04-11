@@ -26,12 +26,12 @@
     </ion-item>
   </div>
   <ion-buttons>
-    <ion-button color="danger">
+    <ion-button color="danger" (click)="onDismiss()">
       <ion-icon name="close"></ion-icon>
       <ion-label>Cancel</ion-label>
     </ion-button>
     |
-    <ion-button color="primary">
+    <ion-button color="primary" (click)="onSubmit()">
       <ion-icon name="save"></ion-icon>
       <ion-label>Submit</ion-label>
     </ion-button>
